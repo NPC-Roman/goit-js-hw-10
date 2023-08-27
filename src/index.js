@@ -54,6 +54,7 @@ const renderBreedsSelect = breeds => {
 };
 
 // Функція, яка виконується при виборі породи кота у списку (подія change на селекті)
+// Функція, яка виконується при виборі породи кота у списку (подія change на селекті)
 function onChangeSelect(event) {
   loaderEl.classList.remove('unvisible');
   divPictEl.innerHTML = '';
@@ -68,7 +69,34 @@ function onChangeSelect(event) {
         'Oops! Something went wrong! Try reloading the page!'
       );
     })
-    .finally(() => loaderEl.classList.add('unvisible'));
+    .finally(() => {
+      loaderEl.classList.add('unvisible');
+
+      // Генерація випадкового кольору та зміна кольору фону
+      const colors = [
+        '#47d147',
+        '#ff8080',
+        'pink',
+        '#80b3ff',
+        'orchid',
+        '#1ad1ff',
+        '#ffcc5c',
+        '#b19cd9',
+        '#4caf50',
+        '#ff6f61',
+        '#ffeb3b',
+        '#00bcd4',
+        '#e91e63',
+        '#9c27b0',
+        '#795548',
+      ];
+      const max = colors.length - 1;
+      const min = 0;
+      const index = Math.round(Math.random() * (max - min) + min);
+      const color = colors[index];
+      console.log(color);
+      document.body.style.backgroundColor = color;
+    });
 }
 
 // Функція, що фетчить дані та на їх основі створює розмітку випадаючого списку (працює відразу після завантаження сторінки)
@@ -99,3 +127,11 @@ breedSelect.addEventListener('change', onChangeSelect);
 
 // Завантаження списку порід та рендеринг при завантаженні сторінки
 fetchAndRenderBreeds();
+
+const colors = ['#47d147', '#ff8080', 'pink', '#80b3ff', 'orchid', '#1ad1ff'];
+const max = colors.length - 1;
+const min = 0;
+const index = Math.round(Math.random() * (max - min) + min);
+const color = colors[index];
+console.log(color);
+document.body.style.backgroundColor = color;
