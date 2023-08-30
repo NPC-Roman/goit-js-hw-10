@@ -44,7 +44,7 @@ const renderBreedsSelect = breeds => {
     .join('');
   elements.breedSelect.insertAdjacentHTML('beforeend', markup);
   new SlimSelect({
-    select: '#single',
+    select: '#main',
   });
 };
 
